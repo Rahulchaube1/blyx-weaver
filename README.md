@@ -1,10 +1,14 @@
-<img src="assets/logo.png" width="112" height="112" alt="Weaver bird logo">
+<img src="assets/logo.png" width="112" height="112" alt="A golden masked weaver grips a green reed in its bill.">
 
 # Blyx Weaver
 
 Lay out equal-width tiles on small or large viewports, distribute leftover pixels and map pointer coordinates back to an item.
 
 A grid can draw a tile in one place and dispatch a click to its neighbor if painting and input code round dimensions differently. CSS Grid describes how tracks and gaps form a layout. Weaver uses one integer track calculation for both drawing and input. [W3C, CSS Grid Layout Module Level 1](https://www.w3.org/TR/css-grid-1/#grid-tracks)
+
+## Editor extension
+
+Install **RahulChaube.blyx-weaver** to run the worked example and use the framework’s function completions in a Blyx file. Open an empty `.blyx` file, enter `blyx-weaver-demo`, then choose **Blyx: Run File**. [Editor downloads](https://www.blyx-lang.space/packages/weaver#editor) · [Download the extension](https://github.com/Rahulchaube1/blyxxxx/releases/download/framework-editors-v0.1.0/blyx-weaver-0.1.0.vsix) · [Starter with framework source](https://github.com/Rahulchaube1/blyxxxx/releases/download/framework-editors-v0.1.0/blyx-weaver-starter-0.1.0.zip)
 
 ## Install and run
 

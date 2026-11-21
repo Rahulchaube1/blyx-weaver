@@ -1,0 +1,29 @@
+use std::cli;
+use weaver;
+
+fn check(ok: bool, label: str) {
+    if !ok { stderr_line(label); process_exit(1); }
+}
+
+fn main() {
+    check(we_columns(0, 0, 0, 80, 3) == 0 && we_columns(4, 0, 0, 80, 3) == 1, "collapsed viewport");
+    check(we_columns(320, 8, 8, 80, 6) == 3, "responsive columns");
+    let a = we_rect(13, 0, 1, 3, 4, 0);
+    let b = we_rect(13, 0, 1, 3, 4, 1);
+    let c = we_rect(13, 0, 1, 3, 4, 2);
+    check(at(a, 2) == 4.0 && at(b, 2) == 4.0 && at(c, 2) == 3.0 && at(c, 0) == 10.0, "rounding spans full viewport");
+    check(we_hit(13, 0, 1, 3, 4, 4, 4, 1) == -1, "column gutter");
+    check(we_hit(13, 0, 1, 3, 4, 4, 1, 4) == -1, "row gutter");
+    check(we_hit(13, 0, 1, 3, 4, 4, 1, 5) == 3 && we_hit(13, 0, 1, 3, 4, 4, 6, 5) == -1, "partial final row");
+    check(len(we_rect(2, 0, 1, 3, 4, 0)) == 0, "no room");
+    let mut x = 0;
+    while x < 13 {
+        let id = we_hit(13, 0, 1, 3, 4, 3, x, 0);
+        if id >= 0 {
+            let box = we_rect(13, 0, 1, 3, 4, id);
+            check(at(box, 0) <= at([x], 0) && at([x], 0) < at(box, 0) + at(box, 2), "hit and layout agree");
+        }
+        x += 1;
+    }
+    println!("weaver checks passed");
+}

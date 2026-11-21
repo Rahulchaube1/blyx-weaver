@@ -1,0 +1,9 @@
+use weaver;
+
+fn main() {
+    let columns = we_columns(320, 8, 8, 80, 6);
+    let second = we_rect(320, 8, 8, columns, 48, 1);
+    println!(columns);
+    println!(at(second, 0));
+    println!(we_hit(320, 8, 8, columns, 48, 5, 113, 19));
+}
